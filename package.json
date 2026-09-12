@@ -1,0 +1,89 @@
+{
+  "name": "diagram-studio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Diagram Studio - 纯本地 Web 绘图工作台（Mermaid + PlantUML 本地渲染）",
+  "main": "dist-electron/main.cjs",
+  "author": "Diagram Studio",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "smoke": "esbuild tools/smoke.ts --bundle --platform=node --format=esm --outfile=tools/_smoke.mjs --log-level=error && node tools/_smoke.mjs",
+    "electron:typecheck": "tsc -p electron/tsconfig.json",
+    "electron:verify": "node tools/electron-verify.mjs",
+    "electron:compile": "esbuild electron/main.ts --bundle --platform=node --format=cjs --outfile=dist-electron/main.cjs --external:electron && esbuild electron/preload.ts --bundle --platform=node --format=cjs --outfile=dist-electron/preload.cjs --external:electron",
+    "electron:dev": "npm run electron:compile && electron dist-electron/main.cjs",
+    "electron:build": "npm run build && npm run electron:compile && electron-builder --win --x64",
+    "electron:pack": "npm run build && npm run electron:compile && electron-builder --dir --win --x64",
+    "release": "npm run electron:build"
+  },
+  "dependencies": {
+    "@codemirror/autocomplete": "^6.18.1",
+    "@codemirror/commands": "^6.6.2",
+    "@codemirror/language": "^6.10.3",
+    "@codemirror/lint": "^6.8.2",
+    "@codemirror/state": "^6.4.1",
+    "@codemirror/view": "^6.34.1",
+    "@lezer/highlight": "^1.2.1",
+    "@xyflow/react": "^12.11.6",
+    "codemirror": "^6.0.1",
+    "dexie": "^4.0.8",
+    "dompurify": "^3.1.7",
+    "elkjs": "^0.9.3",
+    "mermaid": "^11.4.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zustand": "^4.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "electron": "33.4.11",
+    "electron-builder": "^25.1.8",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vite-plugin-singlefile": "^2.0.2"
+  },
+  "build": {
+    "appId": "com.diagramstudio.app",
+    "productName": "Diagram Studio",
+    "copyright": "Copyright © 2026 Diagram Studio",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "dist-electron/**/*",
+      "dist/**/*",
+      "package.json",
+      "!**/*.map",
+      "!**/*.ts"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "build/icon.png",
+      "artifactName": "Diagram-Studio-${version}-setup.${ext}",
+      "legalTrademarks": "Diagram Studio"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Diagram Studio",
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

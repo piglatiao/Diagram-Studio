@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <!-- 圆角方形底,白底近黑边 -->
+  <rect x="8" y="8" width="240" height="240" rx="28" ry="28" fill="#ffffff" stroke="#1a1a1a" stroke-width="4"/>
+
+  <!-- 三个流程节点:起点/过程/终点 -->
+  <!-- 圆角矩形(过程) -->
+  <rect x="60" y="100" width="136" height="56" rx="10" ry="10" fill="#ffffff" stroke="#1a1a1a" stroke-width="3.5"/>
+
+  <!-- 起点圆形(左侧) -->
+  <circle cx="40" cy="128" r="14" fill="#1a1a1a"/>
+  <text x="40" y="132" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">A</text>
+
+  <!-- 终点菱形(右侧) -->
+  <g transform="translate(192 128)">
+    <polygon points="22,0 44,22 22,44 0,22" fill="#ffffff" stroke="#1a1a1a" stroke-width="3.5"/>
+    <text x="22" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#1a1a1a">B</text>
+  </g>
+
+  <!-- 连接线 -->
+  <line x1="54" y1="128" x2="60" y2="128" stroke="#1a1a1a" stroke-width="3"/>
+  <polygon points="60,124 68,128 60,132" fill="#1a1a1a"/>
+  <line x1="196" y1="128" x2="194" y2="128" stroke="#1a1a1a" stroke-width="3"/>
+  <polygon points="194,124 186,128 194,132" fill="#1a1a1a"/>
+
+  <!-- 中央的"图形"提示符号:网格节点暗示 -->
+  <g transform="translate(128 128)" stroke="#1a1a1a" stroke-width="2" fill="#ffffff">
+    <rect x="-30" y="-10" width="20" height="20"/>
+    <rect x="10" y="-10" width="20" height="20"/>
+    <rect x="-10" y="-22" width="20" height="20"/>
+    <circle cx="0" cy="0" r="4" fill="#1a1a1a"/>
+    <line x1="-20" y1="0" x2="-10" y2="-12"/>
+    <line x1="0" y1="-12" x2="10" y2="0"/>
+  </g>
+</svg>

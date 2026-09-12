@@ -1,0 +1,21 @@
+node_modules/
+dist/
+dist-electron/
+release/
+release-build/
+*.local
+.workbuddy/
+
+# 临时日志与测试产物
+_*.txt
+_*.log
+_*.json
+_e2e.png
+tools/_*.txt
+tools/_*.log
+tools/_*.mjs
+build/_icon_*.html
+
+# electron-builder 临时与调试
+**/.icon-ico/
+**/builder-debug.yml
