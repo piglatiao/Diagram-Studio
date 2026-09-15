@@ -225,4 +225,5 @@ build: { minify: true }
 mermaid.js（MIT）、elkjs（EPL-2.0）、CodeMirror（MIT）、React（MIT）、Electron（MIT）、electron-builder（Apache-2.0）。
 **elkjs 是 EPL-2.0**：分发光产物（NSIS 安装包 / 免安装目录 / 离线 HTML）时需要保留 elkjs 源码可得性 —— 公开分发场景请重新打包一份包含 `node_modules/elkjs/` 的归档，或在 README / 项目站点明确标注 elkjs 来源与 EPL 链接（`https://www.eclipse.org/legal/epl-2.0/`）。
 #   D i a g r a m - S t u d i o  
+ #   D i a g r a m - S t u d i o  
  
